@@ -68,10 +68,11 @@
         #   prevFbn = PprevFbn + prevFbn;
         #   PprevFbn = tempFbn;
         # }
+        # result = PprevFbn + prevFbn
 
         addi $t2, $zero, 0      # set PprevFbn to 0
         addi $t3, $t3, 1        # set prevFbn to 1
-        addi $t4, $zero, 0      # set counter to 0
+        addi $t4, $zero, 2      # set counter to 2
         
 
 
@@ -82,12 +83,15 @@
         add $t2, $t5, $zero     #PprevFbn = tempFbn;
         addi $t4, $t4, 1        #increment counter
 
-        slt $t1, $t4, $t0       # checking if conter is less than n - if yes t1 will be set to 1, o.w set to 0
+        slt $t1, $t4, $t0       # checking if counter is less than input n - if yes t1 will be set to 1, o.w set to 0
         bne $t1, $zero, loop    # start the loop again
-
+        
+        add $t0, $t2, $t3
 
 
     exit: 
+
+        
 
         #print message
         li $v0, 4

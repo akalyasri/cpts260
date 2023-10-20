@@ -44,7 +44,24 @@
 
     correctInput:
 
-        beq $t0 $zero exit
+        beq $t0, $zero, exit
+        beq $t0, 1, exit 
+
+        # t0 is the result
+        # t1 is n
+        # t2 is PprevFbn
+        # t3 is prevFbn
+        # t4 is counter (i)
+
+        # 0, 1 , 0+1, 1+1, 1+2, 2+3, 3+5, 5+8
+        # PprevFbn(previous previous fib num) + prevFbn
+        # PprevFbn = 0;
+        # prevFbn = 1;
+        # for(int i = 2; i<n; i++){
+        #   tempFbn = prevFbn;
+        #   prevFbn = PprevFbn + prevFbn;
+        #   PprevFbn = tempFbn;
+        # }
 
     loop: 
 

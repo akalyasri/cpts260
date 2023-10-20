@@ -52,11 +52,12 @@
         beq $t0, $zero, exit
         beq $t0, 1, exit 
 
-        # t0 is the result
-        # t1 is n
+        # t0 is n -> then the result
+        # t1 is used as a conditional
         # t2 is PprevFbn
         # t3 is prevFbn
         # t4 is counter (i)
+        # t5 is tempFBn
 
         # 0, 1 , 0+1, 1+1, 1+2, 2+3, 3+5, 5+8
         # PprevFbn(previous previous fib num) + prevFbn
@@ -68,9 +69,22 @@
         #   PprevFbn = tempFbn;
         # }
 
+        addi $t2, $zero, 0      # set PprevFbn to 0
+        addi $t3, $t3, 1        # set prevFbn to 1
+        addi $t4, $zero, 0      # set counter to 0
+        
 
 
     loop: 
+
+        add $t5, $t3, $zero     #tempFbn = prevFbn;
+        add $t3, $t2, $t3       #prevFbn = PprevFbn + prevFbn;
+        add $t2, $t5, $zero     #PprevFbn = tempFbn;
+        addi $t4, $t4, 1        #increment counter
+
+        slt $t1, $t4, $t0       # checking if conter is less than n - if yes t1 will be set to 1, o.w set to 0
+        bne $t1, $zero, loop    # start the loop again
+
 
 
     exit: 

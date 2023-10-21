@@ -22,6 +22,8 @@
     prompt_msg: .asciiz "Enter 10 integers in ascending order: "
     error_msg: .asciiz "Error. Need to enter integers in ascending order. \n\n"
 
+    array: .space 40
+
 .text
 #.global main
 
@@ -31,5 +33,19 @@
         li $v0, 4
         la $a0, prompt_msg
         syscall
+
+
+
+    getArrayInput:
+        li $v0, 5
+        
+
+
+    exit:
+
+        #exit
+        li $v0, 10
+        syscall
+        
 
 

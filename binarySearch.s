@@ -20,32 +20,64 @@
 
 .data
     prompt_msg: .asciiz "Enter 10 integers in ascending order: "
+    target_msg: .asciiz "Enter your target integer: "
     error_msg: .asciiz "Error. Need to enter integers in ascending order. \n\n"
 
-    array: .space 40
+    array: .space 40 # 40 each integer is 4 bits
 
 .text
-#.global main
+    .globl main
 
-    main:
+        main:
 
-        #display prompt
-        li $v0, 4
-        la $a0, prompt_msg
-        syscall
+            #display prompt
+            li $v0, 4
+            la $a0, prompt_msg
+            syscall
+
+            # t0 is counter (i)
+            # t1 is length 10
+            # t2 is the current index
+            # t3 is mid
+            # t4 is high
+            # t5 is low
+            # t6 is the target
+
+
+            # get 10 integers from user
+
+
+            # check if the 10 given integers are in ascending order
+
+
+            # get target value from user
+            li $v0, 4
+            la $a0, target_msg
+            syscall
+
+            li $v0, 5
+            syscall
+            move $t6, $v0   # t6 is the target
+
+            # perform binary search for given target
+
+            
+
+
+            # display if target was hit and if so, what index it was found at
 
 
 
-    getArrayInput:
-        li $v0, 5
-        
+        getArrayInput:
+            li $v0, 5
 
 
-    exit:
 
-        #exit
-        li $v0, 10
-        syscall
-        
+        exit:
+
+            #exit
+            li $v0, 10
+            syscall
+            
 
 

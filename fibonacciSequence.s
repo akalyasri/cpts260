@@ -28,7 +28,7 @@
 
 
 .text
-#.global main
+.globl main
 
     main: 
 
@@ -73,8 +73,6 @@
         addi $t2, $zero, 0      # set PprevFbn to 0
         addi $t3, $t3, 1        # set prevFbn to 1
         addi $t4, $zero, 2      # set counter to 2
-        
-
 
     loop: 
 
@@ -90,8 +88,6 @@
 
 
     exit: 
-
-        
 
         #print message
         li $v0, 4

@@ -23,7 +23,7 @@
 .data
 
     prompt_msg: .asciiz "Enter a non-negative integer: "
-    final_msg: .asciiz "Fibonacci number for input: "
+    final_msg: .asciiz "Fibonacci number for given input: "
     error_msg: .asciiz "Error. Only enter non negative number. \n\n"
 
 

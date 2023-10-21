@@ -19,6 +19,17 @@
 
 
 .data
-
+    prompt_msg: .asciiz "Enter 10 integers in ascending order: "
+    error_msg: .asciiz "Error. Need to enter integers in ascending order. \n\n"
 
 .text
+#.global main
+
+    main:
+
+        #display prompt
+        li $v0, 4
+        la $a0, prompt_msg
+        syscall
+
+
